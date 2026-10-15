@@ -1721,7 +1721,7 @@ main #gia-tri .value p {
 }
 
 #thong-tin .audience {
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.3fr) minmax(0, 1fr);
+  display: block;
   gap: 30px;
   align-items: center;
 }
@@ -1751,6 +1751,7 @@ main #thong-tin .audience > div > p:not(.kicker) {
 
 #thong-tin .checks {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
   margin: 0;
 }
@@ -1844,6 +1845,10 @@ main #thong-tin .audience > div > p:not(.kicker) {
 }
 
 @media (max-width: 700px) {
+  #thong-tin .checks {
+    grid-template-columns: 1fr;
+  }
+
   #thong-tin {
     padding: 40px 0;
   }
@@ -2098,11 +2103,170 @@ main .kicker,
   color: #fff;
 }
 
+/* Mobile layout: readable copy, full-width sections and touch-sized controls. */
 @media (max-width: 700px) {
+  html {
+    scroll-padding-top: 80px;
+  }
+
+  .wrap {
+    padding-inline: 20px;
+  }
+
+  .wrap > *, .fields > *, .field {
+    min-width: 0;
+  }
+
+  .nav {
+    gap: 12px;
+  }
+
+  .menu-toggle {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    flex-shrink: 0;
+  }
+
+  .nav-links {
+    max-height: calc(100dvh - 67px);
+    overflow-y: auto;
+    padding: 12px 20px;
+  }
+
+  .nav-links a {
+    min-height: 48px;
+    font-size: 15px;
+  }
+
+  .hero-banner-artwork {
+    padding-bottom: 76px;
+    background: #edf8ff;
+  }
+
   .banner-register-button {
-    width: 32%;
-    font-size: clamp(5px, 1.35vw, 10px);
-    gap: 3px;
-    padding: 0 5px;
+    top: auto;
+    bottom: 16px;
+    left: 20px;
+    width: calc(100% - 40px);
+    height: 46px;
+    padding: 10px 16px;
+    gap: 12px;
+    font-size: 13px;
+  }
+
+  .section, #thong-tin, #dang-ky {
+    padding-block: 36px;
+  }
+
+  .about-grid, .preparation-layout, .cards,
+  #dang-ky .register-grid, .footer-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  h2, #dang-ky .registration-intro h2 {
+    font-size: clamp(21px, 6vw, 26px);
+    line-height: 1.5;
+    overflow-wrap: break-word;
+  }
+
+  main .kicker, #thong-tin .kicker, #gia-tri .kicker {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  main p:not(.kicker):not(.privacy):not(.form-status),
+  main #thong-tin .audience > div > p:not(.kicker) {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .workshop-photo {
+    height: auto;
+    border-radius: 14px;
+  }
+
+  .preparation-questions {
+    margin-block: 20px;
+    padding-left: 20px;
+    line-height: 1.8;
+  }
+
+  .preparation-questions li {
+    padding-left: 3px;
+  }
+
+  #gia-tri .values-grid, #gia-tri .kicker {
+    max-width: 100%;
+  }
+
+  #gia-tri .value {
+    grid-template-columns: 36px minmax(0, 1fr);
+    padding: 16px 14px;
+    gap: 6px 12px;
+  }
+
+  #gia-tri .value-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+
+  #gia-tri .value h3 {
+    font-size: 15px;
+  }
+
+  #thong-tin .checks {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  #thong-tin .checks li {
+    font-size: 14px;
+  }
+
+  #dang-ky .form {
+    padding: 24px 18px;
+  }
+
+  #dang-ky .field input,
+  #dang-ky .field select,
+  #dang-ky .field textarea {
+    font-size: 16px;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  #dang-ky .field input, #dang-ky .field select {
+    height: 48px;
+  }
+
+  #dang-ky .form .btn {
+    min-height: 48px;
+    white-space: normal;
+    font-size: 14px;
+  }
+
+  .footer .contact {
+    gap: 12px;
+  }
+
+  .footer .copyright {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 360px) {
+  .wrap {
+    padding-inline: 16px;
+  }
+
+  #dang-ky .form {
+    padding-inline: 14px;
+  }
+
+  main .kicker, #thong-tin .kicker, #gia-tri .kicker {
+    font-size: 16px;
   }
 }
